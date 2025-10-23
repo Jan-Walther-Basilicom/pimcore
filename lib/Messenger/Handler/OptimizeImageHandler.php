@@ -37,8 +37,7 @@ class OptimizeImageHandler implements BatchHandlerInterface
         protected ImageOptimizerInterface $optimizer,
         protected LoggerInterface $logger,
         protected LongRunningHelper $longRunningHelper
-    )
-    {
+    ) {
     }
 
     public function __invoke(OptimizeImageMessage $message, Acknowledger $ack = null): mixed
