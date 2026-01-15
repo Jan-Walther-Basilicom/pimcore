@@ -165,6 +165,10 @@ class SearchController extends UserAwareController
             $join = '';
             $localizedJoin = '';
             foreach ($bricks as $ob) {
+                if(DataObject\Objectbrick\Definition::getByKey($ob) instanceof DataObject\Objectbrick\Data\AbstractData) {
+                    // prevent SQL injection when $fields[]=field1 AND IF(1=1,SLEEP(5),0)~field2
+                    continue;
+                }
                 $brickAlias = ' `' . $ob .'`';
                 $objectTable = '`search_backend_data`';
 
